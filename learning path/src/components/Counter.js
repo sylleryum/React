@@ -6,7 +6,7 @@ class Counter extends Component {
         super(props)
 
         this.state = {
-            count: 0
+            count: 1
         }
     }
 
@@ -21,8 +21,8 @@ class Counter extends Component {
         
 
         //use like this if previous state will be updated, second parameter (after prevState<)
-        this.setState((prevState)=>({
-            count:prevState.count+1
+        this.setState((prevState, props)=>({
+            count:prevState.count+parseInt(props.theProps)
         }),
         //callback
         ()=>console.log("success? "+this.props.theProps))
@@ -39,9 +39,9 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                <div>count - {this.state.count}</div>
+                <div>count, increment changing state - {this.state.count}</div>
                 {/* <button onClick={()=>this.increment()}>Increment</button> */}
-                <button onClick={()=>this.incrementFive()}>Increment</button>
+                <button onClick={()=>this.increment()}>Increment</button>
             </div>
         )
     }

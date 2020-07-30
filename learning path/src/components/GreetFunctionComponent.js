@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Welcome from './GreetClassComponent'
 
 //regular (not prefered)
 // function Greet(){
@@ -10,7 +11,8 @@ const Greet = props => {
     console.log(props)
     return (
         <div>
-            <h1>{props.name} and {props.secondAtt}</h1>
+            <p>Here is the inner component Welcome: <Welcome {...props}/></p>
+            <p>Greet component: <h1>{props.name} and {props.secondAtt}</h1></p>
             {props.children}
         </div>
     )
