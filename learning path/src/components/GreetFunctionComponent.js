@@ -12,7 +12,7 @@ const Greet = props => {
     return (
         <div>
             <p>Here is the inner component Welcome: <Welcome {...props}/></p>
-            <p>Greet component: <h1>{props.name} and {props.secondAtt}</h1></p>
+            <p>Greet component: <h1>{props.name || "defaultValueForGreet"} and {props.secondAtt||  "defaultValueForGreet2nd"}</h1></p>
             {props.children}
         </div>
     )
