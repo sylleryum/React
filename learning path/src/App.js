@@ -7,6 +7,8 @@ import Message from './components/MessageState'
 import Counter from './components/Counter'
 import FunctionClick from './components/FunctionClick';
 import SyntheticEvents from './components/events/SyntheticEvents';
+import EmployeeCyclePhases from './components/events/EmployeeCyclePhases';
+import EmployeeListLifecycle from './components/events/EmployeeListLifecycle';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
   return (
     <div className="App">
       
+      <EmployeeListLifecycle initialNames={['Ronald', 'Donald', 'Elise', 'Kim']}/>
+
       {/*simple state example*/}
       <Message/>
 
