@@ -9,6 +9,7 @@ import FunctionClick from './components/FunctionClick';
 import SyntheticEvents from './components/events/SyntheticEvents';
 import EmployeeListLifecycle from './components/events/EmployeeListLifecycle';
 import StreamingNumber from './components/events/Update/StreamingNumber';
+import ParentComponent from './components/events/props to parent/ParentComponent';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
 
   return (
     <div className="App">
+
+      <ParentComponent/>
 
       {/* mount and update lifecycle example */}
       <StreamingNumber/>
