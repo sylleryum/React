@@ -2,8 +2,11 @@ import React from 'react'
 
 function ChildComponent(props) {
     return (
-        <div>
-            <button onClick={()=> props.greetHandler("childComponent")}>Greet Parent</button>
+        <div>               {/*arrow used to pass parameter*/}
+            <button onClick={()=> 
+                props.greetHandler("childComponent")}>
+                    Greet Parent
+            </button>
         </div>
     )
 }

@@ -12,8 +12,9 @@ class ParentComponent extends Component {
         this.greetParent = this.greetParent.bind(this)
     }
     
-    greetParent(){
-        alert(`Hello ${this.state.parentName}`)
+    greetParent(theParameterPassedInTheChildComponent){
+        alert(`Hello ${this.state.parentName} 
+        and ${theParameterPassedInTheChildComponent}`)
     }
 
     render() {
@@ -21,7 +22,7 @@ class ParentComponent extends Component {
             <div>
                 <ChildComponent greetHandler={this.greetParent}/>
             </div>
-        )
+        ) 
     }
 }
 
