@@ -13,6 +13,9 @@ import ParentComponent from './components/events/props to parent/ParentComponent
 import StylingCss from "./components/StylingCss";
 import EmailForm from "./components/forms/EmailForm";
 import HotelBookingForm from "./components/forms/HotelBookingForm";
+import HotelBookingFormSingleEvent from "./components/forms/HotelBookingFormSingleEvent";
+import HotelBookingFormMultipleComponents
+    from "./components/forms/individual componenets/HotelBookingFormMultipleComponents";
 
 
 function App() {
@@ -23,7 +26,15 @@ function App() {
     return (
         <div className="App">
 
+            {/*multiple components*/}
+            **multiple components
+            <HotelBookingFormMultipleComponents/>
+            {/*form with textarea/text input and select done through 1 event only*/}
+            **form with single event handler:
+            <HotelBookingFormSingleEvent/>
+
             {/*form with textarea/text input and select done manually*/}
+            **form with multiple event handler:
             <HotelBookingForm/>
 
             {/*simple text input using form*/}
