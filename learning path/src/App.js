@@ -16,6 +16,9 @@ import HotelBookingForm from "./components/forms/HotelBookingForm";
 import HotelBookingFormSingleEvent from "./components/forms/HotelBookingFormSingleEvent";
 import HotelBookingFormMultipleComponents
     from "./components/forms/individual componenets/HotelBookingFormMultipleComponents";
+import RefsDemo from "./components/refs/RefsDemo";
+import Hero from "./components/errorBoundary/Hero";
+import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 
 
 function App() {
@@ -25,6 +28,20 @@ function App() {
 
     return (
         <div className="App">
+
+            {/*error boundary*/}
+            {/*<ErrorBoundary>*/}
+            {/*    <Hero heroName={"Batman"}/>*/}
+            {/*</ErrorBoundary>*/}
+            {/*<ErrorBoundary>*/}
+            {/*    <Hero heroName={"Superman"}/>*/}
+            {/*</ErrorBoundary>*/}
+            {/*<ErrorBoundary>*/}
+            {/*    <Hero heroName={"joker"}/>*/}
+            {/*</ErrorBoundary>*/}
+
+            {/*refs*/}
+            <RefsDemo/>
 
             {/*multiple components*/}
             **multiple components
