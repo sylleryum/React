@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d953e15f-786f-4c90-a865-084d1886a65e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/errorBoundary/ErrorBoundary.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/errorBoundary/Hero.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/refs/RefsDemo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hoc/Button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/hoc/HOCCount.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
@@ -83,6 +82,7 @@
       <workItem from="1597331491755" duration="1474000" />
       <workItem from="1597335657676" duration="736000" />
       <workItem from="1597349389519" duration="1295000" />
+      <workItem from="1597430789252" duration="4890000" />
     </task>
     <task id="LOCAL-00001" summary="forms">
       <created>1596744906875</created>
@@ -110,6 +110,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="forms continued" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="370" y="218" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597434390286">
+      <screen x="0" y="0" width="1280" height="943" />
+    </state>
+    <state x="370" y="218" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.943@0.0.1280.943" timestamp="1597434390286" />
     <state width="1259" height="223" key="GridCell.Tab.0.bottom" timestamp="1597350686007">
       <screen x="0" y="0" width="1280" height="943" />
     </state>
@@ -130,5 +134,9 @@
       <screen x="0" y="0" width="1280" height="943" />
     </state>
     <state x="141" y="116" key="SettingsEditor/0.0.1280.943@0.0.1280.943" timestamp="1597349995252" />
+    <state x="296" y="216" width="672" height="677" key="run.anything.popup" timestamp="1597435723130">
+      <screen x="0" y="0" width="1280" height="943" />
+    </state>
+    <state x="296" y="216" width="672" height="677" key="run.anything.popup/0.0.1280.943@0.0.1280.943" timestamp="1597435723130" />
   </component>
 </project>
