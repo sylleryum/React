@@ -19,8 +19,10 @@ import HotelBookingFormMultipleComponents
 import RefsDemo from "./components/refs/RefsDemo";
 import Hero from "./components/errorBoundary/Hero";
 import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
-import HOCCount from "./components/hoc/HOCCount";
+import ButtonParent from "./components/hoc/ButtonParent";
 import Button from "./components/hoc/Button";
+import ClickCounter from './components/hoc/2/ClickCounter';
+import HoverCounter from './components/hoc/2/HoverCounter';
 
 
 
@@ -28,12 +30,21 @@ function App() {
 
     //used to pass to a map (similar to java stream, and create one component for each of these items)
     const theList = ["listElement1", "listElement2"];
-    const ExtendedButton = HOCCount(Button)
+    const ExtendedButton = ButtonParent(Button)
 
     return (
         <div className="App">
 
-            <Button/>
+            {/*hoc 2*/}
+            **hoc 2<br/>
+
+            <ClickCounter toChild="testOK"/>
+            <HoverCounter/>
+
+            {/*hoc*/}
+            **hoc 1
+            <Button toChild="coming from app>ButtonParent>Button"/>
+
             {/*error boundary*/}
             {/*<ErrorBoundary>*/}
             {/*    <Hero heroName={"Batman"}/>*/}
