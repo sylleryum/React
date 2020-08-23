@@ -19,6 +19,7 @@ const withCounter = WrappedComponent =>{
                 <WrappedComponent
                  count={this.state.count}
                  incrementCount={this.incrementCount}
+                    //this is to forward props
                  {...this.props}/>
 
             )

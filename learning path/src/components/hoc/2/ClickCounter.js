@@ -4,10 +4,10 @@ import withCounter from './withCounter'
 class ClickCounter extends Component {
 
     render(){
-        const {count, incrementCount} = this.props
+        const {count, incrementCount, toChild} = this.props
         return(
             <button onClick={incrementCount}>
-                {this.props.toChild} Clicked {count}
+                {toChild} Clicked {count}
             </button>
         )
     }

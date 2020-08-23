@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import './App.css';
 import Greet from './components/GreetFunctionComponent'
 import Welcome from './components/GreetClassComponent'
@@ -23,7 +23,21 @@ import ButtonParent from "./components/hoc/ButtonParent";
 import Button from "./components/hoc/Button";
 import ClickCounter from './components/hoc/2/ClickCounter';
 import HoverCounter from './components/hoc/2/HoverCounter';
-
+import CounterParent from "./components/renderProps/CounterParent";
+import ClickCounterRP from "./components/renderProps/ClickCounterRP";
+import HoverCounterRP from "./components/renderProps/HoverCounterRP";
+import ParameterFromComponentToInvoker from "./components/ParameterFromComponentToInvoker ";
+import {UserProvider} from "./components/context/userContextParentComponent";
+import ComponentC from "./components/context/ComponentC";
+import ComponentE from "./components/context/ComponentE";
+import Users from "./components/context/2/Users";
+import Departments from "./components/context/2/Departments";
+import ParentContext from "./components/context/2/ParentContext";
+import PostListGetRequest from "./components/fetchFromApi/PostListGetRequest";
+import UseState from "./components/hooks/UseState";
+import UseState2 from "./components/hooks/UseState2";
+import UseEffect from "./components/hooks/UseEffect";
+import UseEffectOuter from "./components/hooks/UseEffectCleanup";
 
 
 function App() {
@@ -32,13 +46,42 @@ function App() {
     const theList = ["listElement1", "listElement2"];
     const ExtendedButton = ButtonParent(Button)
 
+
     return (
         <div className="App">
+            <UseEffectOuter/>
+            <UseEffect/>
+
+            {/*state in function (useState hook)*/}
+            <UseState2/>
+            <UseState/>
+
+            {/*using get on an API*/}
+            <PostListGetRequest/>
+
+            {/*context*/}
+            <ParentContext/>
+
+            {/*<UserProvider value="a name passed to the components">*/}
+            ********************context:
+            <ComponentC/>
+            {/*</UserProvider>*/}
+
+
+            {/*render Props*/}
+            ********************render props:
+            <CounterParent render={(count, incrementCount) => (
+                <ClickCounterRP count={count} incrementCount={incrementCount}/>
+            )}/>
+
+            <CounterParent render={(count, incrementCount) => (
+                <HoverCounterRP count={count} incrementCount={incrementCount}/>
+            )}/>
 
             {/*hoc 2*/}
-            **hoc 2<br/>
+            *******************hoc 2<br/>
 
-            <ClickCounter toChild="testOK"/>
+            <ClickCounter toChild="hoc OK"/>
             <HoverCounter/>
 
             {/*hoc*/}
@@ -112,6 +155,7 @@ function App() {
             {theList.map((eachListItem) => <Welcome nameWelcome={eachListItem} secondAttWelcome={eachListItem}/>)}
             <div>===</div>
 
+            <ParameterFromComponentToInvoker toUpper={() => "calling from the outside"}/>
 
             {/*simple button with event*/}
             <div>Simple event (shows clicked on the console)</div>
