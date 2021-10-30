@@ -1,65 +1,92 @@
 import React from 'react';
-import {createStore, applyMiddleware} from 'redux'
-import {connect} from "react-redux";
+import {
+    configureStore,
+    getDefaultMiddleware,
+    createAction,
+    createReducer,
+    createSlice,
+    createAsyncThunk
+} from "@reduxjs/toolkit";
+import Counter from "./Counter";
+import axios from 'axios';
 
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
 
-//the state
-const initialState = {
-    value: 10
-}
+const incrementAction = createAction("INCREMENT");
+const loginSuccess = createAction("LOGIN_SUCCESS");
+const loginFailed = createAction("LOGIN_FAILED");
+const fetchLinksRequest = createAction("FETCH_LINKS_REQUEST");
+const fetchLinksSuccess = createAction("FETCH_LINKS_SUCCESS");
 
-//reducer = state + action (actions are string constants that will tell what to do based on the action received)
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case INCREMENT:
-            console.log("entro")
-            return { ...state, value: state.value + 1 };
-        case DECREMENT:
-            return { ...state, value: state.value - 1 };
-        default:
-            return state
+// AUTH STATE
+const authState = {
+    value: 0,
+    fetchFromApi: []
+};
+
+// const authReducer = createReducer(authState, {
+//     [incrementAction]: (state, action) => {
+//         state.value = state.value + 1
+//     },
+//     [loginFailed]: (state, action) => {
+//         // return the next state
+//     },
+// });
+
+// First, create the thunk
+export const fetchUser = createAsyncThunk(
+    'users/fetchUserById',
+    async (userId, thunkAPI) => {
+        const {data} = await axios.get("https://jsonplaceholder.typicode.com/users")
+        return data
+    }
+)
+
+export const authSlice = createSlice({
+    name: "auth",
+    initialState: authState,
+    reducers: {
+        incrementerAction: (state, action) => {
+            state.value = state.value + 1
+        },
+        loginFailed: (state, action) => {
+            state.error = action.payload;
+        }
+    },
+    extraReducers: {
+        [fetchUser.fulfilled]: (state, action) => {
+            // Add user to the state array
+            console.log('test');
+            state.fetchFromApi.push(action.payload)
+        }
+    }
+
+});
+
+//NANA (next>action>next>action)
+function loggerMiddleware(store) {
+    return function (next) {
+        return function (action) {
+            console.log("loggerMiddleware: ")
+            console.log(action);
+            console.log(store.getState());
+            return next(action);
+        }
     }
 }
 
-//store receives the reducer (if there are more than one, a combine can be used)
-export const store = createStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+export const store = configureStore({
+    reducer: {
+        auth: authSlice.reducer,
+    },
+    middleware: [...getDefaultMiddleware(), loggerMiddleware],
+});
 
 const App = () => {
-    //store.subscribe(() => console.log('Look ma, Redux!!'))
-    return (
-        <CounterMapped/>
-    );
-};
-export default App;
-
-//==================Counter==================
-//dispatcher = a function that sends an action to the reducer, payload is the data to be worked/used inside reducer's action
-export const increment = () => ({ type: INCREMENT });
-export const decrement = () => ({ type: DECREMENT });
-
-
-
-const Counter = ({theValueProps, incrementDispatch, decrementDispatch}) => {
     return (
         <div>
-            value: {theValueProps}<br/>
-            <button onClick={incrementDispatch}>+</button><button onClick={decrementDispatch}>-</button>
-            {/*<button onClick={() => onDecrement("Decrementing")}>Decrement</button>*/}
-
+            <Counter/>
         </div>
     );
 };
 
-//mapStateToProps maps the piece of state desired to the component specified on connect
-const mapStateToProps = state => {
-    return {theValueProps: state.value}
-}
-//mapDispatchToProps
-const mapDispatchToProps = dispatch => ({
-    decrementDispatch: () => dispatch(decrement()),
-    incrementDispatch: () => dispatch(increment())
-})
-const CounterMapped = connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default App;

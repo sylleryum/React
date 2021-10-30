@@ -21,6 +21,7 @@ export const ErrorContext = createContext(null);
 
 const App = () => {
 
+
     useEffect(() => {
         ReactGA.initialize('G-1TYMY0CW5E');
         ReactGA.pageview(window.location.pathname);
